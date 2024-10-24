@@ -42,4 +42,25 @@ To use these scripts, clone the repository and ensure that the scripts are execu
 ```bash
 chmod +x 00-header 10-sysinfo 90-updates
 
+Welcome to Debian 13 (trixie) (GNU/Linux 6.11.4-amd64 x86_64)
 
+ * Documentation:  https://debian.org/doc
+ * Support:        https://debian.org/support
+ * Bug Report:     https://bugs.debian.org
+
+ System information as of Wed Oct 23 23:22:00 EDT 2024
+
+  System load:           0.08
+  Usage of /:            5% of 228GB
+  Memory usage:          10%
+  Swap usage:            0%
+  Temperature:           34 C
+  Processes:             226
+  Users logged in:       1
+  IPv4 address for eth0: 192.168.1.10
+  IPv6 address for eth0: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:97f3
+  IPv6 address for eth0: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:8b76
+
+0 updates can be applied immediately.
+
+Last login: Wed Oct 23 22:58:34 2024 from 192.168.1.22
