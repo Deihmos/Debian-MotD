@@ -39,7 +39,7 @@ This repository contains several shell scripts designed to display system inform
 
 To use these scripts, clone the repository and ensure that the scripts are executable. You can place them in `/etc/update-motd.d/` to have the messages displayed upon login in a Debian-based system. To make the scripts executable, use the following command:
 
-bash
+```bash
 chmod +x 00-header 10-sysinfo 90-updates
 
 ## Output
