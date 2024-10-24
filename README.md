@@ -41,3 +41,5 @@ To use these scripts, clone the repository and ensure that the scripts are execu
 
 ```bash
 chmod +x 00-header 10-sysinfo 90-updates
+
+![image](https://github.com/user-attachments/assets/74bb1aa8-2064-414b-b3cd-0a412744e751)
