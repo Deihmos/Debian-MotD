@@ -41,6 +41,7 @@ To use these scripts, clone the repository and ensure that the scripts are execu
 
 chmod +x 00-header 10-sysinfo 90-updates
 ```bash
+
 ## Output
 
 Welcome to Debian 13 (trixie) (GNU/Linux 6.11.4-amd64 x86_64)
