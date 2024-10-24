@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Capture distribution details, kernel version, and architecture
+DISTRO="Debian" # We set the distribution manually to "Debian"
+VERSION=$(lsb_release -sr)  # Get the version (e.g., "12")
+CODENAME=$(lsb_release -cs)  # Get the codename (e.g., "bookworm")
+KERNEL=$(uname -r)  # Get the kernel version
+ARCH=$(uname -m)  # Get the architecture
+
+# Print welcome message with reduced space between "bookworm" and "(GNU/Linux ...)"
+echo "Welcome to $DISTRO $VERSION ($CODENAME) (GNU/Linux $KERNEL $ARCH)"
+echo ""
+echo " * Documentation:  https://debian.org/doc"
+echo " * Support:        https://debian.org/support"
+echo " * Bug Report:     https://bugs.debian.org"
+echo ""
+echo " System information as of $(date)"
+echo ""

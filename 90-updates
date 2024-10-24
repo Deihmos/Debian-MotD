@@ -1,0 +1,23 @@
+#!/bin/sh
+# Fetch the list of all upgradable packages
+updates=$(apt list --upgradable 2>/dev/null | grep -v "^Listing" | wc -l)
+
+# Fetch the list of security updates only
+security_updates=$(apt list --upgradable 2>/dev/null | grep -v "^Listing" | grep "\-security" | wc -l)
+
+# Display the update count in the MOTD
+echo ""  # Adds a blank line for formatting
+if [ "$updates" -gt 0 ]; then
+    echo "$updates updates can be applied immediately."
+    if [ "$security_updates" -gt 0 ]; then
+        if [ "$security_updates" -eq 1 ]; then
+            echo "1 of these updates is a standard security update."
+        else
+            echo "$security_updates of these updates are standard security updates."
+        fi
+    fi
+    echo "To see these additional updates run: apt list --upgradable"
+else
+    echo "0 updates can be applied immediately."
+fi
+echo ""  # Adds a blank line after the update message

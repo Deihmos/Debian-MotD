@@ -1,0 +1,53 @@
+#!/bin/sh
+
+LOAD=$(cat /proc/loadavg | awk '{print $1}')
+ROOT_USAGE=$(df -BG / | grep '/$' | awk '{print $5 " of " $2 "B"}')
+MEMORY=$(free | grep Mem | awk '{print int($3/$2 * 100.0) "%"}')
+SWAP=$(free | grep Swap | awk '{print int($3/$2 * 100.0) "%"}')
+
+# Fetch the temperature from /sys/class/thermal/thermal_zone0/temp
+if [ -f /sys/class/thermal/thermal_zone0/temp ]; then
+    CPU_TEMP=$(cat /sys/class/thermal/thermal_zone0/temp)
+    CPU_TEMP_C=$((CPU_TEMP / 1000))  # Convert millidegrees Celsius to degrees Celsius
+    TEMPERATURE="$CPU_TEMP_C C"
+else
+    TEMPERATURE="N/A"
+fi
+
+PROCESSES=$(ps ax | wc -l | tr -d " ")
+USERS=$(($(who | wc -l) + 1))
+IPV4=$(hostname -I | awk '{print $1}')
+
+# Fetch all global scope IPv6 addresses
+IPV6_ADDRESSES=$(ip -6 addr show scope global | grep inet6 | awk '{print $2}' | cut -d'/' -f1)
+
+# Fetch last login information
+LAST_LOGIN=$(last -n 1 -i | head -n 1)
+
+# Output system information
+echo "  System load:           $LOAD"
+echo "  Usage of /:            $ROOT_USAGE"
+echo "  Memory usage:          $MEMORY"
+echo "  Swap usage:            $SWAP"
+
+# Show temperature
+echo "  Temperature:           $TEMPERATURE"
+
+echo "  Processes:             $PROCESSES"
+echo "  Users logged in:       $USERS"
+echo "  IPv4 address for eth0: $IPV4"
+
+# Show all IPv6 addresses if detected, with proper alignment
+if [ -n "$IPV6_ADDRESSES" ]; then
+  echo "$IPV6_ADDRESSES" | while read -r addr; do
+   printf "  IPv6 address for eth0: %s\n" "$addr"
+done
+fi
+
+# Add a blank line and then show the last login information
+echo ""
+
+
+
+
+
